@@ -1,0 +1,12 @@
+{
+    "country_id":"216",
+    "country_code":"US",
+    "city":"San Francisco",
+    "addressLine1":"123 Main St",
+    "addressLine2":"",
+    "addressLine3":"",
+    "zipcode":"94110",
+    "state_id":"9",
+    "state":"Bouche Du Rhone",
+    "catchall":"@mycatchall.com"
+}
