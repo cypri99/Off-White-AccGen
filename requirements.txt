@@ -1,2 +1,4 @@
 names
 requests
+colorama
+random
