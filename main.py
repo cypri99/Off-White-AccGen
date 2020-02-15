@@ -3,6 +3,7 @@ from colorama import Fore, init
 from threading import Thread
 import random, time, names, string, json, os
 from threading import Lock
+from random import choice
 
 
 s_print_lock = Lock()
@@ -91,6 +92,20 @@ def gen_phone(international_format=False):
 
     return f'{calling_code}{first}{second}{last}{b}{a}'
 
+ua = [
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A',
+    'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.3 Safari/534.53.10',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
+    'Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/31.0',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20130401 Firefox/31.0',
+    'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20120101 Firefox/29.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7',
+    'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.6 (KHTML, like Gecko) Chrome/16.0.897.0 Safari/535.6',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.54 Safari/535.2',
+]
 
 def genacc(proxy_list, s):
 
@@ -115,7 +130,9 @@ def genacc(proxy_list, s):
             zipcode = config['zipcode']
             phone = gen_phone()
             #--------------------------------------------------------------------------------
-
+            
+            ua1 = choice(ua)
+            
             if len(proxy_list) > 0:
                 s.proxies = get_proxy(proxy_list)
 
@@ -124,7 +141,7 @@ def genacc(proxy_list, s):
                 'Host': 'www.off---white.com',
                 'accept': 'application/json, text/plain, */*',
                 'origin': 'https://www.off---white.com',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+                'user-agent': ua1,
                 'content-type': 'application/json;charset=UTF-8',
                 'sec-fetch-site': 'same-origin',
                 'sec-fetch-mode': 'cors',
